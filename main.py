@@ -98,7 +98,7 @@ def query_handler(call):
             last_message = get_last_message(message.chat.id)
             if last_message:
                 response = get_gpt_response(last_message, switch=True)
-                bot.edit_message_text(chat_id=message.chat.id, message_id=message.message_id, text=response,
+                bot.send_message(chat_id=message.chat.id, text=response,
                                       reply_markup=generate_markup())
             else:
                 bot.send_message(message.chat.id, "Извините, я не смог найти ваш последний запрос.")
