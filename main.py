@@ -10,7 +10,6 @@ from message_handler import welcome_message
 # Инициализация бота с использованием токена из файла конфигурации
 bot = telebot.TeleBot(BOT_TOKEN)
 
-
 # Настройка логирования
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
@@ -69,7 +68,7 @@ def handle_message(message):
             # Вызываем функцию для очистки истории сообщений
             clear_history(message.chat.id)
             bot.send_message(message.chat.id, "Ваша история сообщений была очищена.")
-        except Exception as e:
+        except:
             bot.send_message(message.chat.id, "Произошла ошибка. Попробуйте еще раз!")
     else:
         # Если сообщение не является командой, отправляем его в GPT
@@ -89,7 +88,9 @@ def query_handler(call):
 
     :param call: Объект callback-запроса от inline-кнопки.
     """
+
     message = call.message
+    bot.send_chat_action(message.chat.id, 'typing')
     bot.answer_callback_query(callback_query_id=call.id)
 
     if call.data == "switch":
@@ -102,7 +103,7 @@ def query_handler(call):
                                       reply_markup=generate_markup())
             else:
                 bot.send_message(message.chat.id, "Извините, я не смог найти ваш последний запрос.")
-        except Exception as e:
+        except:
             bot.send_message(message.chat.id, "Произошла ошибка. Попробуйте еще раз!")
     elif call.data == "good_response":
         try:
