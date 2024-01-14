@@ -5,6 +5,7 @@ import telebot
 from config import BOT_TOKEN
 from db import initialize_db
 from gpt_integration import get_gpt_response
+from message_handler import welcome_message
 
 # Инициализация бота с использованием токена из файла конфигурации
 bot = telebot.TeleBot(BOT_TOKEN)
@@ -23,7 +24,7 @@ def send_welcome(message):
 
     :param message: Объект сообщения от пользователя.
     """
-    bot.reply_to(message, "Привет! Я бот, интегрированный с GPT. Задай мне вопрос.",
+    bot.reply_to(message, welcome_message,
                  reply_markup=generate_reply_markup())
 
 

@@ -1,9 +1,11 @@
 import g4f
 
+from message_handler import prompt_for_gpt
+
 
 def get_gpt_response(message, switch=False):
     try:
-        prompt = message
+        prompt = prompt_for_gpt + message
         if switch:
             prompt += "\nПожалуйста, дайте другой ответ на этот же вопрос."
 
