@@ -1,3 +1,3 @@
 import os
 
-BOT_TOKEN = "ВашТокен"
+BOT_TOKEN = "6707238865:AAH5rtd0Yd_83tH3aHxiyr9jPyI8SNvZXjY"
