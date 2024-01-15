@@ -13,7 +13,7 @@ def get_gpt_response(message,
         response = g4f.ChatCompletion.create(  # Создание запроса к gpt.
             model=g4f.models.default,  # Указание на использование стандартной модели из 'g4f.models'.
             messages=[{"role": "user", "content": prompt}],
-            # Выбираем моделб юзер, в content передается содержание запроса
+            # Выбираем модель юзер, в content передается содержание запроса
             timeout=120,  # Установка времени ожидания ответа от GPT в 120 секунд.
         )
         return response  # Возврат полученного от GPT ответа.
